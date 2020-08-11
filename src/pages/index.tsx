@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react';
 import { GetStaticProps } from 'next';
 
-import { getAllLocationsForHome } from '../../lib/api';
+import { getAllLocations } from '../../lib/api';
 import Layout from '../components/Layout';
 import LocationCard from '../components/LocationCard';
 import LocationType from '../types/location';
@@ -29,7 +29,7 @@ export const Home: FunctionComponent<HomeProps> = ({ allLocations }) => (
 );
 
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-  const allLocations = await getAllLocationsForHome(preview);
+  const allLocations = await getAllLocations(preview);
 
   return {
     props: { allLocations, preview },

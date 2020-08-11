@@ -1,17 +1,5 @@
 import client, { previewClient } from './sanity';
 
-const getUniqueLocations = (locations): boolean => {
-  const slugs = new Set();
-  return locations.filter((location) => {
-    if (slugs.has(location.slug)) {
-      return false;
-    } else {
-      slugs.add(location.slug);
-      return true;
-    }
-  });
-};
-
 const locationFields = `
   city,
   state,
@@ -33,17 +21,6 @@ const locationFields = `
 
 const getClient = (preview) => (preview ? previewClient : client);
 
-export async function getPreviewLocationBySlug(slug) {
-  const data = await getClient(true).fetch(
-    `*[_type == "location" && slug.current == $slug] | order(_createdAt desc){
-      ${locationFields}
-      content
-    }`,
-    { slug }
-  );
-  return data[0];
-}
-
 export async function getAllLocationsWithSlug() {
   const data = await client.fetch(
     `*[_type == "location"]{ 'slug': slug.current }`
@@ -51,7 +28,7 @@ export async function getAllLocationsWithSlug() {
   return data;
 }
 
-export async function getAllLocationsForHome(preview) {
+export async function getAllLocations(preview) {
   const results = await getClient(preview).fetch(
     `*[_type == "location"] | order(_createdAt desc){
       city,
