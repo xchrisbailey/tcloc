@@ -1,3 +1,4 @@
+require('leaflet/dist/leaflet.css')
 import NextApp from 'next/app'
 import { CacheProvider } from '@emotion/core'
 import GoogleFonts from 'next-google-fonts'

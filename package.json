@@ -38,12 +38,16 @@
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-optipng": "^8.0.0",
     "imagemin-svgo": "^8.0.0",
+    "leaflet": "^1.6.0",
     "next": "latest",
     "next-compose-plugins": "^2.2.0",
     "next-google-fonts": "^1.2.1",
     "next-optimized-images": "^2.6.2",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-geocode": "^0.2.1",
+    "react-leaflet": "^2.7.0",
+    "react-leaflet-universal": "^2.2.1"
   },
   "devDependencies": {
     "@testing-library/react": "^10.0.1",

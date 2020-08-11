@@ -1,32 +1,44 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
+
 import LocationType from '../../types/location'
 import { getAllLocationsWithSlug, getLocationBySlug } from '../../../lib/api'
-
 import Layout from '../../components/Layout'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { FC } from 'react'
 import ContentBlock from '../../components/ContentBlock'
 import Grid from '../../shared/Grid'
+import g from '../../../lib/geocode'
+import Map from '../../components/MyMap'
 
 interface Props {
   location: LocationType
+  coords: { lat: string; lng: string }
 }
 
-const Location: FC<Props> = ({ location }) => {
+const Location: FC<Props> = ({ location, coords }) => {
   return (
     <Layout>
-      <h1
-        css={css`
-          background-color: var(--color-pink);
-          color: var(--color-black);
-          text-align: center;
-          border-radius: 0.1em;
-          margin: 1em 0 2em 0;
-        `}
-      >
-        {location.city}, {location.state}
-      </h1>
+      <Grid cols={[1, 2, 2]}>
+        <div
+          css={css`
+            height: 300px;
+          `}
+        >
+          <h1
+            css={css`
+              background-color: var(--color-pink);
+              color: var(--color-black);
+              text-align: center;
+              border-radius: 0.1em;
+              margin: 0 0 2em 0;
+            `}
+          >
+            {location.city}, {location.state}
+          </h1>
+        </div>
+        <Map {...coords} />
+      </Grid>
       <h2 id="general">General Information</h2>
       <Grid cols={[1, 2, 2]}>
         <ContentBlock
@@ -106,11 +118,18 @@ export const getStaticProps: GetStaticProps = async ({
   preview = false,
 }: Params) => {
   const location = await getLocationBySlug(params.slug, preview)
+  const coords = await g.fromAddress(`${location.city}, ${location.state}`)
+
+  const { lat, lng } = coords.results[0].geometry.location
 
   return {
     props: {
       location: {
         ...location,
+      },
+      coords: {
+        lat,
+        lng,
       },
     },
   }
