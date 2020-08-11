@@ -5,6 +5,7 @@ import Layout from '../../components/Layout'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { FC } from 'react'
 import ContentBlock from '../../components/ContentBlock'
+import Grid from '../../shared/Grid'
 
 interface Props {
   location: LocationType
@@ -13,39 +14,45 @@ interface Props {
 const Location: FC<Props> = ({ location }) => {
   return (
     <Layout>
-      <div>
-        <h1>
-          {location.city}, {location.state}
-        </h1>
-        <h2 id="general">General Information</h2>
+      <h1>
+        {location.city}, {location.state}
+      </h1>
+      <h2 id="general">General Information</h2>
+      <Grid cols={[1, 2, 2]}>
         <ContentBlock
           name="Housing Costs"
           type="cost"
           info={location.housingCosts}
         />
         <ContentBlock name="Weather" info={location.weather} type="weather" />
+      </Grid>
 
-        <h2 id="hospitals">Hospitals</h2>
-        <ContentBlock
-          name="Residency Programs"
-          info={location.residencyPrograms}
-          type="basicLink"
-        />
+      <h2 id="hospitals">Hospitals</h2>
+      <Grid cols={[1, 2, 2]}>
         <ContentBlock
           name="Hospitals & Quick Info"
           info={location.hospitals}
           type="withNotesLinks"
         />
+        <ContentBlock
+          name="Residency Programs"
+          info={location.residencyPrograms}
+          type="basicLink"
+        />
+      </Grid>
 
-        <h2 id="work">Work</h2>
+      <h2 id="work">Work</h2>
+      <Grid cols={[1, 2, 2]}>
         <ContentBlock name="Delta" info={location.delta} type="basicNote" />
         <ContentBlock
           name="Computer Science"
           info={location.computerScience}
           type="withNotesLinks"
         />
+      </Grid>
 
-        <h2 id="tennis">Tennis</h2>
+      <h2 id="tennis">Tennis</h2>
+      <Grid cols={[1, 2, 2]}>
         <ContentBlock
           name="Clubs"
           info={location.tennisClubs}
@@ -56,8 +63,10 @@ const Location: FC<Props> = ({ location }) => {
           info={location.tennisLeagues}
           type="basicLink"
         />
+      </Grid>
 
-        <h2 id="outdoors">Outdoor Activities</h2>
+      <h2 id="outdoors">Outdoor Activities</h2>
+      <Grid cols={[1, 2, 2]}>
         <ContentBlock
           name="Trails (Hiking/Running)"
           info={location.trails}
@@ -68,7 +77,7 @@ const Location: FC<Props> = ({ location }) => {
           info={location.camping}
           type="withNotesLinks"
         />
-      </div>
+      </Grid>
     </Layout>
   )
 }

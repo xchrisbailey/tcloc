@@ -11,6 +11,8 @@ export const globalStyles = (
         --color-green: #caffbf;
         --color-blue: #9bf6ff;
         --color-darkBlue: #00bbcc;
+        --color-purple: #bdb2ff;
+        --color-orange: #ffd6a5;
         --color-white: #fffffc;
         --color-black: #121212;
         --color-darkGrey: #333333;

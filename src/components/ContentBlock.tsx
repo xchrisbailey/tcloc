@@ -1,4 +1,6 @@
-import React, { FC } from 'react'
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core'
+import { FC } from 'react'
 
 import NotesList from './NotesList'
 
@@ -11,8 +13,15 @@ interface Props {
 const ContentBlock: FC<Props> = ({ name, type, info }) => {
   if (type === 'cost') {
     return (
-      <>
-        <h3>{name}</h3>
+      <div>
+        <h3
+          css={css`
+            background-color: var(--color-green);
+            padding: 0.2em 0.3em;
+          `}
+        >
+          {name}
+        </h3>
         <ul>
           {info.map((cost) => (
             <li key={cost._key}>
@@ -21,12 +30,19 @@ const ContentBlock: FC<Props> = ({ name, type, info }) => {
             </li>
           ))}
         </ul>
-      </>
+      </div>
     )
   } else if (type === 'weather') {
     return (
-      <>
-        <h3>{name}</h3>
+      <div>
+        <h3
+          css={css`
+            background-color: var(--color-blue);
+            padding: 0.2em 0.3em;
+          `}
+        >
+          {name}
+        </h3>
         <ul>
           {info.map((w) => (
             <li key={w._key}>
@@ -35,12 +51,19 @@ const ContentBlock: FC<Props> = ({ name, type, info }) => {
             </li>
           ))}
         </ul>
-      </>
+      </div>
     )
   } else if (type === 'withNotesLinks') {
     return (
-      <>
-        <h3>{name}</h3>
+      <div>
+        <h3
+          css={css`
+            background-color: var(--color-purple);
+            padding: 0.2em 0.3em;
+          `}
+        >
+          {name}
+        </h3>
         <ul>
           {info.map((h) => (
             <li key={h._key}>
@@ -51,12 +74,19 @@ const ContentBlock: FC<Props> = ({ name, type, info }) => {
             </li>
           ))}
         </ul>
-      </>
+      </div>
     )
   } else if (type === 'basicLink') {
     return (
-      <>
-        <h3>{name}</h3>
+      <div>
+        <h3
+          css={css`
+            background-color: var(--color-yellow);
+            padding: 0.2em 0.3em;
+          `}
+        >
+          {name}
+        </h3>
         {info.map((rp) => (
           <ul key={rp._key}>
             <li>
@@ -64,14 +94,21 @@ const ContentBlock: FC<Props> = ({ name, type, info }) => {
             </li>
           </ul>
         ))}
-      </>
+      </div>
     )
   } else if (type === 'basicNote') {
     return (
-      <>
-        <h3>{name}</h3>
+      <div>
+        <h3
+          css={css`
+            background-color: var(--color-orange);
+            padding: 0.2em 0.3em;
+          `}
+        >
+          {name}
+        </h3>
         <NotesList notes={info} />
-      </>
+      </div>
     )
   }
 }
