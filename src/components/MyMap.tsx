@@ -16,11 +16,15 @@ const MyMap: FC<Props> = ({ lat, lng }) => {
       css={css`
         border-radius: 1em;
         overflow: hidden;
+        min-height: 300px;
       `}
     >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        css={css`
+          height: 250px;
+        `}
       />
       <Marker position={[lat, lng]}>
         <Popup>

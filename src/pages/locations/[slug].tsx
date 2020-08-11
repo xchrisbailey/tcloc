@@ -22,7 +22,12 @@ const Location: FC<Props> = ({ location, coords }) => {
       <Grid cols={[1, 2, 2]}>
         <div
           css={css`
-            height: 300px;
+            @media (min-width: 768px) {
+              max-height: 300px;
+            }
+            @media (min-width: 1280px) {
+              max-height: 250px;
+            }
           `}
         >
           <h1
@@ -31,7 +36,7 @@ const Location: FC<Props> = ({ location, coords }) => {
               color: var(--color-black);
               text-align: center;
               border-radius: 0.1em;
-              margin: 0 0 2em 0;
+              font-size: 1.5em;
             `}
           >
             {location.city}, {location.state}
