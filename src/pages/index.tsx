@@ -1,17 +1,17 @@
-import { FunctionComponent } from 'react';
-import { GetStaticProps } from 'next';
+import { FC } from 'react'
+import { GetStaticProps } from 'next'
 
-import { getAllLocations } from '../../lib/api';
-import Layout from '../components/Layout';
-import LocationCard from '../components/LocationCard';
-import LocationType from '../types/location';
-import Grid from '../shared/Grid';
+import { getAllLocations } from '../../lib/api'
+import Layout from '../components/Layout'
+import LocationCard from '../components/LocationCard'
+import LocationType from '../types/location'
+import Grid from '../shared/Grid'
 
-type HomeProps = {
-  allLocations: LocationType[];
-};
+type Props = {
+  allLocations: LocationType[]
+}
 
-export const Home: FunctionComponent<HomeProps> = ({ allLocations }) => (
+export const Home: FC<Props> = ({ allLocations }) => (
   <Layout>
     <Grid>
       {allLocations.map((location) => (
@@ -26,14 +26,14 @@ export const Home: FunctionComponent<HomeProps> = ({ allLocations }) => (
       ))}
     </Grid>
   </Layout>
-);
+)
 
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-  const allLocations = await getAllLocations(preview);
+  const allLocations = await getAllLocations(preview)
 
   return {
     props: { allLocations, preview },
-  };
-};
+  }
+}
 
-export default Home;
+export default Home

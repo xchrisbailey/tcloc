@@ -1,4 +1,5 @@
-import client, { previewClient } from './sanity';
+import client, { previewClient } from './sanity'
+import LocationType from '../src/types/location'
 
 const locationFields = `
   city,
@@ -17,15 +18,15 @@ const locationFields = `
   tennisLeagues,
   trails,
   weather
-`;
+`
 
-const getClient = (preview) => (preview ? previewClient : client);
+const getClient = (preview) => (preview ? previewClient : client)
 
 export async function getAllLocationsWithSlug() {
   const data = await client.fetch(
     `*[_type == "location"]{ 'slug': slug.current }`
-  );
-  return data;
+  )
+  return data
 }
 
 export async function getAllLocations(preview) {
@@ -37,30 +38,24 @@ export async function getAllLocations(preview) {
       cover,
       summary,
     }`
-  );
+  )
 
-  return results;
+  return results
 }
 
-export async function getLocationBySlug(slug: string, preview: boolean) {
-  const curClient = getClient(preview);
-  const location = await curClient.fetch(
-    `*[_type == "location" && slug.current == $slug] | order(_createdAt desc) {
-        city, 
-        state, 
-        camping, 
-        computerScience, 
-        delta, 
-        hospitals, 
-        housingCosts, 
-        residencyPrograms, 
-        tennisClubs, 
-        tennisLeagues, 
-        trails, 
-        weather
+export async function getLocationBySlug(
+  slug: string,
+  preview: boolean
+): Promise<LocationType> {
+  const curClient = getClient(preview)
+  const location = await Promise.all([
+    curClient.fetch(
+      `*[_type == "location" && slug.current == $slug] | order(_createdAt desc) {
+        ${locationFields} 
       }`,
-    { slug }
-  );
+      { slug }
+    ),
+  ])
 
-  return location[0];
+  return location[0][0]
 }
