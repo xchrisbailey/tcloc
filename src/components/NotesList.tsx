@@ -1,7 +1,7 @@
-import React, { FC, ReactElement } from 'react';
+import React, { FC } from 'react'
 
 interface Props {
-  notes: string[];
+  notes: string[]
 }
 
 const NotesList: FC<Props> = ({ notes }) => {
@@ -11,7 +11,7 @@ const NotesList: FC<Props> = ({ notes }) => {
         <li key={note}>{note}</li>
       ))}
     </ul>
-  );
-};
+  )
+}
 
-export default NotesList;
+export default NotesList

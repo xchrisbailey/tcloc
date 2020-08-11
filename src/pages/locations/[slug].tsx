@@ -1,16 +1,13 @@
-/** @jsx jsx */
-import { css, jsx } from '@emotion/core';
-import LocationType from '../../types/location';
-import { getAllLocationsWithSlug, getLocationBySlug } from '../../../lib/api';
+import LocationType from '../../types/location'
+import { getAllLocationsWithSlug, getLocationBySlug } from '../../../lib/api'
 
-import Layout from '../../components/Layout';
-import { GetStaticProps, GetStaticPaths } from 'next';
-import { FC } from 'react';
-import NotesList from '../../components/NotesList';
-import ContentBlock from '../../components/ContentBlock';
+import Layout from '../../components/Layout'
+import { GetStaticProps, GetStaticPaths } from 'next'
+import { FC } from 'react'
+import ContentBlock from '../../components/ContentBlock'
 
 interface Props {
-  location: LocationType;
+  location: LocationType
 }
 
 const Location: FC<Props> = ({ location }) => (
@@ -73,22 +70,22 @@ const Location: FC<Props> = ({ location }) => (
       />
     </div>
   </Layout>
-);
+)
 
-export default Location;
+export default Location
 
 type Params = {
   params: {
-    slug: string;
-  };
-  preview: boolean;
-};
+    slug: string
+  }
+  preview: boolean
+}
 
 export const getStaticProps: GetStaticProps = async ({
   params,
   preview = false,
 }: Params) => {
-  const location = await getLocationBySlug(params.slug, preview);
+  const location = await getLocationBySlug(params.slug, preview)
 
   return {
     props: {
@@ -97,11 +94,11 @@ export const getStaticProps: GetStaticProps = async ({
         ...location,
       },
     },
-  };
-};
+  }
+}
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const locations = await getAllLocationsWithSlug();
+  const locations = await getAllLocationsWithSlug()
 
   return {
     paths:
@@ -111,5 +108,5 @@ export const getStaticPaths: GetStaticPaths = async () => {
         },
       })) || [],
     fallback: true,
-  };
-};
+  }
+}
