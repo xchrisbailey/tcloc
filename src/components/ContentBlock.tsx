@@ -1,11 +1,11 @@
-import React, { FC } from 'react';
+import React, { FC } from 'react'
 
-import NotesList from './NotesList';
+import NotesList from './NotesList'
 
 interface Props {
-  name: string;
-  type: string;
-  info: any[];
+  name: string
+  type: string
+  info: any[]
 }
 
 const ContentBlock: FC<Props> = ({ name, type, info }) => {
@@ -22,7 +22,7 @@ const ContentBlock: FC<Props> = ({ name, type, info }) => {
           ))}
         </ul>
       </>
-    );
+    )
   } else if (type === 'weather') {
     return (
       <>
@@ -36,7 +36,7 @@ const ContentBlock: FC<Props> = ({ name, type, info }) => {
           ))}
         </ul>
       </>
-    );
+    )
   } else if (type === 'withNotesLinks') {
     return (
       <>
@@ -52,7 +52,7 @@ const ContentBlock: FC<Props> = ({ name, type, info }) => {
           ))}
         </ul>
       </>
-    );
+    )
   } else if (type === 'basicLink') {
     return (
       <>
@@ -65,15 +65,15 @@ const ContentBlock: FC<Props> = ({ name, type, info }) => {
           </ul>
         ))}
       </>
-    );
+    )
   } else if (type === 'basicNote') {
     return (
       <>
         <h3>{name}</h3>
         <NotesList notes={info} />
       </>
-    );
+    )
   }
-};
+}
 
-export default ContentBlock;
+export default ContentBlock

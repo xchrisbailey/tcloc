@@ -1,16 +1,16 @@
 /** @jsx jsx */
-import { css, jsx } from '@emotion/core';
-import Link from 'next/link';
-import { FC } from 'react';
+import { css, jsx } from '@emotion/core'
+import Link from 'next/link'
+import { FC } from 'react'
 
-import { imageBuilder } from '../../lib/sanity';
+import { imageBuilder } from '../../lib/sanity'
 
 interface Props {
-  city: string;
-  state: string;
-  cover: string;
-  summary: string;
-  slug: string;
+  city: string
+  state: string
+  cover: string
+  summary: string
+  slug: string
 }
 
 const PostCard: FC<Props> = ({ city, state, cover, summary, slug }) => (
@@ -119,6 +119,6 @@ const PostCard: FC<Props> = ({ city, state, cover, summary, slug }) => (
       </p>
     </section>
   </article>
-);
+)
 
-export default PostCard;
+export default PostCard
