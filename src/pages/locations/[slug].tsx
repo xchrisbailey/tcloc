@@ -1,3 +1,5 @@
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core'
 import LocationType from '../../types/location'
 import { getAllLocationsWithSlug, getLocationBySlug } from '../../../lib/api'
 
@@ -14,7 +16,15 @@ interface Props {
 const Location: FC<Props> = ({ location }) => {
   return (
     <Layout>
-      <h1>
+      <h1
+        css={css`
+          background-color: var(--color-pink);
+          color: var(--color-black);
+          text-align: center;
+          border-radius: 0.1em;
+          margin: 1em 0 2em 0;
+        `}
+      >
         {location.city}, {location.state}
       </h1>
       <h2 id="general">General Information</h2>

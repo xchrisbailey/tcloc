@@ -18,6 +18,7 @@ const ContentBlock: FC<Props> = ({ name, type, info }) => {
           css={css`
             background-color: var(--color-green);
             padding: 0.2em 0.3em;
+            border-radius: 0.1em;
           `}
         >
           {name}
@@ -39,6 +40,7 @@ const ContentBlock: FC<Props> = ({ name, type, info }) => {
           css={css`
             background-color: var(--color-blue);
             padding: 0.2em 0.3em;
+            border-radius: 0.1em;
           `}
         >
           {name}
@@ -60,6 +62,7 @@ const ContentBlock: FC<Props> = ({ name, type, info }) => {
           css={css`
             background-color: var(--color-purple);
             padding: 0.2em 0.3em;
+            border-radius: 0.1em;
           `}
         >
           {name}
@@ -83,6 +86,7 @@ const ContentBlock: FC<Props> = ({ name, type, info }) => {
           css={css`
             background-color: var(--color-yellow);
             padding: 0.2em 0.3em;
+            border-radius: 0.1em;
           `}
         >
           {name}
@@ -103,6 +107,7 @@ const ContentBlock: FC<Props> = ({ name, type, info }) => {
           css={css`
             background-color: var(--color-orange);
             padding: 0.2em 0.3em;
+            border-radius: 0.1em;
           `}
         >
           {name}
