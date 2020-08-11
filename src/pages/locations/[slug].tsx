@@ -107,6 +107,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
           slug: location.slug,
         },
       })) || [],
-    fallback: true,
+    fallback: false,
   }
 }
