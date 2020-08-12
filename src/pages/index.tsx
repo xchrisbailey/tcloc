@@ -7,7 +7,7 @@ import LocationCard from '../components/LocationCard'
 import LocationType from '../types/location'
 import Grid from '../shared/Grid'
 
-type Props = {
+interface Props {
   allLocations: LocationType[]
 }
 

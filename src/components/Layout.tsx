@@ -6,11 +6,11 @@ import Head from 'next/head'
 import Header from './Header'
 import Container from '../shared/Container'
 
-type LayoutProps = {
+interface Props {
   children: ReactNode
 }
 
-const Layout: FunctionComponent<LayoutProps> = ({ children }) => (
+const Layout: FunctionComponent<Props> = ({ children }) => (
   <>
     <Head>
       <title>location notebook</title>

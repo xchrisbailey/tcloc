@@ -24,7 +24,7 @@ export default class MyDocument extends Document {
     return (
       <html lang="en" id="top">
         <Head>
-          <link rel="shortcut icon" href="/public/favicon.png" />
+          <link rel="shortcut icon" href="/favicon.png" />
         </Head>
         <body>
           <Main />
