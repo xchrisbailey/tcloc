@@ -23,7 +23,9 @@ export default class MyDocument extends Document {
   render(): ReactElement {
     return (
       <html lang="en" id="top">
-        <Head />
+        <Head>
+          <link rel="shortcut icon" href="/public/favicon.png" />
+        </Head>
         <body>
           <Main />
           <NextScript />
