@@ -2,6 +2,7 @@
 import { css, jsx } from '@emotion/core'
 import { FunctionComponent, ReactNode } from 'react'
 import Head from 'next/head'
+import { motion } from 'framer-motion'
 
 import Header from './Header'
 import Container from '../shared/Container'
@@ -11,7 +12,11 @@ interface Props {
 }
 
 const Layout: FunctionComponent<Props> = ({ children }) => (
-  <>
+  <motion.div
+    exit={{ opacity: 0 }}
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+  >
     <Head>
       <title>location notebook</title>
     </Head>
@@ -51,7 +56,7 @@ const Layout: FunctionComponent<Props> = ({ children }) => (
         top
       </a>
     </div>
-  </>
+  </motion.div>
 )
 
 export default Layout

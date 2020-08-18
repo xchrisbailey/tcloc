@@ -22,14 +22,14 @@ const locationFields = `
 
 const getClient = (preview) => (preview ? previewClient : client)
 
-export async function getAllLocationsWithSlug() {
+export async function getAllLocationsWithSlug(): Promise<any> {
   const data = await client.fetch(
     `*[_type == "location"]{ 'slug': slug.current }`
   )
   return data
 }
 
-export async function getAllLocations(preview) {
+export async function getAllLocations(preview: boolean): Promise<any> {
   const results = await getClient(preview).fetch(
     `*[_type == "location"] | order(_createdAt desc){
       city,
