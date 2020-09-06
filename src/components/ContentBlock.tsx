@@ -24,12 +24,16 @@ const ContentBlock: FC<Props> = ({ name, type, info }) => {
           {name}
         </h3>
         <ul>
-          {info.map((cost) => (
-            <li key={cost._key}>
-              average {cost.type} cost ${cost.cost}:{' '}
-              <a href={cost.source}>source</a>
-            </li>
-          ))}
+          {info ? (
+            info.map((cost) => (
+              <li key={cost._key}>
+                average {cost.type} cost ${cost.cost}:{' '}
+                <a href={cost.source}>source</a>
+              </li>
+            ))
+          ) : (
+            <li>no info</li>
+          )}
         </ul>
       </div>
     )
@@ -46,12 +50,16 @@ const ContentBlock: FC<Props> = ({ name, type, info }) => {
           {name}
         </h3>
         <ul>
-          {info.map((w) => (
-            <li key={w._key}>
-              The {w.type} starts in {w.startMonth} and has an average
-              temperature of {w.averageTemperature}°F
-            </li>
-          ))}
+          {info ? (
+            info.map((w) => (
+              <li key={w._key}>
+                The {w.type} starts in {w.startMonth} and has an average
+                temperature of {w.averageTemperature}°F
+              </li>
+            ))
+          ) : (
+            <li>no info provided</li>
+          )}
         </ul>
       </div>
     )
@@ -68,14 +76,18 @@ const ContentBlock: FC<Props> = ({ name, type, info }) => {
           {name}
         </h3>
         <ul>
-          {info.map((h) => (
-            <li key={h._key}>
-              <a href={h.url} target="_blank" rel="noopener noreferrer">
-                {h.name}
-              </a>
-              {h.notes ? <NotesList notes={h.notes} /> : null}
-            </li>
-          ))}
+          {info ? (
+            info.map((h) => (
+              <li key={h._key}>
+                <a href={h.url} target="_blank" rel="noopener noreferrer">
+                  {h.name}
+                </a>
+                {h.notes ? <NotesList notes={h.notes} /> : null}
+              </li>
+            ))
+          ) : (
+            <li>no info provided</li>
+          )}
         </ul>
       </div>
     )
@@ -91,13 +103,17 @@ const ContentBlock: FC<Props> = ({ name, type, info }) => {
         >
           {name}
         </h3>
-        {info.map((rp) => (
-          <ul key={rp._key}>
-            <li>
-              <a href={rp.url}>{rp.name}</a>
-            </li>
-          </ul>
-        ))}
+        {info ? (
+          info.map((rp) => (
+            <ul key={rp._key}>
+              <li>
+                <a href={rp.url}>{rp.name}</a>
+              </li>
+            </ul>
+          ))
+        ) : (
+          <li>no info provided</li>
+        )}
       </div>
     )
   } else if (type === 'basicNote') {
@@ -112,7 +128,7 @@ const ContentBlock: FC<Props> = ({ name, type, info }) => {
         >
           {name}
         </h3>
-        <NotesList notes={info} />
+        {info ? <NotesList notes={info} /> : null}
       </div>
     )
   }

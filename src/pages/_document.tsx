@@ -1,4 +1,4 @@
-import Document, { Head, Main, NextScript } from 'next/document'
+import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { extractCritical } from 'emotion-server'
 import { ReactElement } from 'react'
 
@@ -22,7 +22,7 @@ export default class MyDocument extends Document {
 
   render(): ReactElement {
     return (
-      <html lang="en" id="top">
+      <Html lang="en" id="top">
         <Head>
           <link rel="shortcut icon" href="/favicon.png" />
         </Head>
@@ -30,7 +30,7 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     )
   }
 }
