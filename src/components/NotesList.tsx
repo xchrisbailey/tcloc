@@ -5,9 +5,17 @@ interface Props {
 }
 
 const NotesList: FC<Props> = ({ notes }) => {
-  return (
-    <ul>{notes ? notes.map((note) => <li key={note}>{note}</li>) : null}</ul>
-  )
+  if (notes) {
+    return (
+      <ul>
+        {notes.map((note) => (
+          <li key={note}>{note}</li>
+        ))}
+      </ul>
+    )
+  } else {
+    null
+  }
 }
 
 export default NotesList
