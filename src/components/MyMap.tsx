@@ -1,5 +1,4 @@
-/** @jsx jsx */
-import { css, jsx } from '@emotion/core'
+import { css } from '@emotion/react'
 import { FC } from 'react'
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet-universal'
 
@@ -21,7 +20,7 @@ const MyMap: FC<Props> = ({ lat, lng }) => {
     >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
         css={css`
           height: 250px;
         `}

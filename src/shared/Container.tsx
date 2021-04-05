@@ -1,5 +1,4 @@
-/** @jsx jsx */
-import { css, jsx } from '@emotion/core'
+import { css } from '@emotion/react'
 import { ReactNode, FC } from 'react'
 
 interface Props {
@@ -9,7 +8,7 @@ interface Props {
 
 const container: FC<Props> = ({
   children,
-  cw = ['100%', '690px', '1200px'],
+  cw = ['100%', '690px', '1200px']
 }) => (
   <section
     css={css`

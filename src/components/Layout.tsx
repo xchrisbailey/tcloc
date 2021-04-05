@@ -1,5 +1,4 @@
-/** @jsx jsx */
-import { css, jsx } from '@emotion/core'
+import { css } from '@emotion/react'
 import { FunctionComponent, ReactNode } from 'react'
 import Head from 'next/head'
 import { motion } from 'framer-motion'

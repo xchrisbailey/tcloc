@@ -1,5 +1,4 @@
-/** @jsx jsx */
-import { css, jsx } from '@emotion/core'
+import { css } from '@emotion/react'
 import { FC } from 'react'
 
 import NotesList from './NotesList'
@@ -25,7 +24,7 @@ const ContentBlock: FC<Props> = ({ name, type, info }) => {
         </h3>
         <ul>
           {info ? (
-            info.map((cost) => (
+            info.map(cost => (
               <li key={cost._key}>
                 average {cost.type} cost ${cost.cost}:{' '}
                 <a href={cost.source}>source</a>
@@ -51,7 +50,7 @@ const ContentBlock: FC<Props> = ({ name, type, info }) => {
         </h3>
         <ul>
           {info ? (
-            info.map((w) => (
+            info.map(w => (
               <li key={w._key}>
                 The {w.type} starts in {w.startMonth} and has an average
                 temperature of {w.averageTemperature}°F
@@ -77,7 +76,7 @@ const ContentBlock: FC<Props> = ({ name, type, info }) => {
         </h3>
         <ul>
           {info ? (
-            info.map((h) => (
+            info.map(h => (
               <li key={h._key}>
                 <a href={h.url} target="_blank" rel="noopener noreferrer">
                   {h.name}
@@ -104,7 +103,7 @@ const ContentBlock: FC<Props> = ({ name, type, info }) => {
           {name}
         </h3>
         {info ? (
-          info.map((rp) => (
+          info.map(rp => (
             <ul key={rp._key}>
               <li>
                 <a href={rp.url}>{rp.name}</a>

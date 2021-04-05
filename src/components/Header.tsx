@@ -1,5 +1,4 @@
-/** @jsx jsx */
-import { css, jsx } from '@emotion/core'
+import { css } from '@emotion/react'
 
 import Container from '../shared/Container'
 import Link from 'next/link'

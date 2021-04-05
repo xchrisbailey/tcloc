@@ -1,11 +1,10 @@
-import { css, Global } from '@emotion/core'
+import { css, Global } from '@emotion/react'
 import emotionReset from 'emotion-reset'
 
 export const globalStyles = (
   <Global
     styles={css`
-      ${emotionReset}
-      :root {
+      ${emotionReset} :root {
         --color-pink: #ffadad;
         --color-yellow: #fdffb6;
         --color-green: #caffbf;
