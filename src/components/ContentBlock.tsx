@@ -1,28 +1,22 @@
-import { css } from '@emotion/react'
 import { FC } from 'react'
 
 import NotesList from './NotesList'
 
 interface Props {
+  title?: string
   name: string
   type: string
   info: any[]
 }
 
-const ContentBlock: FC<Props> = ({ name, type, info }) => {
+const ContentBlock: FC<Props> = ({ title, name, type, info }) => {
   if (type === 'cost') {
     return (
-      <div>
-        <h3
-          css={css`
-            background-color: var(--color-green);
-            padding: 0.2em 0.3em;
-            border-radius: 0.1em;
-          `}
-        >
+      <article>
+        <h3 className="bg-green-400 rounded shadow px-2 py-2 text-xl uppercase font-bold">
           {name}
         </h3>
-        <ul>
+        <ul className="list-disc list-inside">
           {info ? (
             info.map(cost => (
               <li key={cost._key}>
@@ -34,21 +28,15 @@ const ContentBlock: FC<Props> = ({ name, type, info }) => {
             <li>no info</li>
           )}
         </ul>
-      </div>
+      </article>
     )
   } else if (type === 'weather') {
     return (
-      <div>
-        <h3
-          css={css`
-            background-color: var(--color-blue);
-            padding: 0.2em 0.3em;
-            border-radius: 0.1em;
-          `}
-        >
+      <article>
+        <h3 className="bg-blue-400 rounded shadow px-2 py-2 text-xl uppercase font-bold">
           {name}
         </h3>
-        <ul>
+        <ul className="list-disc list-inside">
           {info ? (
             info.map(w => (
               <li key={w._key}>
@@ -60,51 +48,44 @@ const ContentBlock: FC<Props> = ({ name, type, info }) => {
             <li>no info provided</li>
           )}
         </ul>
-      </div>
+      </article>
     )
   } else if (type === 'withNotesLinks') {
     return (
-      <div>
-        <h3
-          css={css`
-            background-color: var(--color-purple);
-            padding: 0.2em 0.3em;
-            border-radius: 0.1em;
-          `}
-        >
-          {name}
+      <article>
+        <h3 className="bg-purple-400 rounded shadow px-2 py-2 text-xl uppercase font-bold">
+          {title ? title : name}
         </h3>
-        <ul>
-          {info ? (
-            info.map(h => (
-              <li key={h._key}>
-                <a href={h.url} target="_blank" rel="noopener noreferrer">
+        {info ? (
+          info.map(h => (
+            <>
+              <h4 className="text-lg" key={h._key}>
+                <a
+                  href={h.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-indigo-600 hover:underline hover:text-indigo-800"
+                >
                   {h.name}
                 </a>
-                {h.notes ? <NotesList notes={h.notes} /> : null}
-              </li>
-            ))
-          ) : (
-            <li>no info provided</li>
-          )}
-        </ul>
-      </div>
+              </h4>
+              {h.notes ? <NotesList notes={h.notes} /> : null}
+            </>
+          ))
+        ) : (
+          <h4>no info provided</h4>
+        )}
+      </article>
     )
   } else if (type === 'basicLink') {
     return (
-      <div>
-        <h3
-          css={css`
-            background-color: var(--color-yellow);
-            padding: 0.2em 0.3em;
-            border-radius: 0.1em;
-          `}
-        >
+      <article>
+        <h3 className="bg-yellow-400 rounded shadow px-2 py-2 text-xl uppercase font-bold">
           {name}
         </h3>
         {info ? (
           info.map(rp => (
-            <ul key={rp._key}>
+            <ul className="list-disc list-inside" key={rp._key}>
               <li>
                 <a href={rp.url}>{rp.name}</a>
               </li>
@@ -113,22 +94,16 @@ const ContentBlock: FC<Props> = ({ name, type, info }) => {
         ) : (
           <li>no info provided</li>
         )}
-      </div>
+      </article>
     )
   } else if (type === 'basicNote') {
     return (
-      <div>
-        <h3
-          css={css`
-            background-color: var(--color-orange);
-            padding: 0.2em 0.3em;
-            border-radius: 0.1em;
-          `}
-        >
+      <article>
+        <h3 className="bg-indigo-400 rounded shadow px-2 py-2 text-xl font-bold uppercase">
           {name}
         </h3>
         {info ? <NotesList notes={info} /> : null}
-      </div>
+      </article>
     )
   }
 }

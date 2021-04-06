@@ -1,14 +1,11 @@
-import { css, jsx } from '@emotion/react'
-
 import LocationType from '../../types/location'
 import { getAllLocationsWithSlug, getLocationBySlug } from '../../../lib/api'
 import Layout from '../../components/Layout'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { FC } from 'react'
-import ContentBlock from '../../components/ContentBlock'
-import Grid from '../../shared/Grid'
 import g from '../../../lib/geocode'
 import Map from '../../components/MyMap'
+import ContentBlock from '../../components/ContentBlock'
 
 interface Props {
   location: LocationType
@@ -18,44 +15,22 @@ interface Props {
 const Location: FC<Props> = ({ location, coords }) => {
   return (
     <Layout>
-      <Grid cols={[1, 2, 2]}>
-        <div
-          css={css`
-            @media (min-width: 768px) {
-              max-height: 300px;
-            }
-            @media (min-width: 1280px) {
-              max-height: 250px;
-            }
-          `}
-        >
-          <h1
-            css={css`
-              background-color: var(--color-pink);
-              color: var(--color-black);
-              text-align: center;
-              border-radius: 0.1em;
-              font-size: 1.5em;
-            `}
-          >
+      <section className="grid grid-flow-row grid-cols-1 md:grid-cols-2 auto-rows-max gap-4 mx-2 md:mx-0">
+        <div>
+          <h1 className="text-3xl font-bold text-pink-600">
             {location.city}, {location.state}
           </h1>
         </div>
         <Map {...coords} />
-      </Grid>
-      <h2 id="general">General Information</h2>
-      <Grid cols={[1, 2, 2]}>
         <ContentBlock
           name="Housing Costs"
           type="cost"
           info={location.housingCosts}
         />
         <ContentBlock name="Weather" info={location.weather} type="weather" />
-      </Grid>
 
-      <h2 id="hospitals">Hospitals</h2>
-      <Grid cols={[1, 2, 2]}>
         <ContentBlock
+          title="Hospitals"
           name="Hospitals & Quick Info"
           info={location.hospitals}
           type="withNotesLinks"
@@ -65,34 +40,25 @@ const Location: FC<Props> = ({ location, coords }) => {
           info={location.residencyPrograms}
           type="basicLink"
         />
-      </Grid>
 
-      <h2 id="work">Work</h2>
-      <Grid cols={[1, 2, 2]}>
         <ContentBlock name="Delta" info={location.delta} type="basicNote" />
         <ContentBlock
           name="Computer Science"
           info={location.computerScience}
           type="withNotesLinks"
         />
-      </Grid>
 
-      <h2 id="tennis">Tennis</h2>
-      <Grid cols={[1, 2, 2]}>
-        <ContentBlock
-          name="Clubs"
-          info={location.tennisClubs}
+          <ContentBlock
+          name="Tennis Clubs"
+            info={location.tennisClubs}
           type="withNotesLinks"
-        />
+          />
         <ContentBlock
-          name="Leagues"
+          name="Tennis Leagues"
           info={location.tennisLeagues}
           type="basicLink"
         />
-      </Grid>
 
-      <h2 id="outdoors">Outdoor Activities</h2>
-      <Grid cols={[1, 2, 2]}>
         <ContentBlock
           name="Trails (Hiking/Running)"
           info={location.trails}
@@ -103,7 +69,7 @@ const Location: FC<Props> = ({ location, coords }) => {
           info={location.camping}
           type="withNotesLinks"
         />
-      </Grid>
+      </section>
     </Layout>
   )
 }

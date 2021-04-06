@@ -20,7 +20,7 @@ export default class MyDocument extends Document {
         <Head>
           <link rel="shortcut icon" href="/favicon.png" />
         </Head>
-        <body>
+        <body className="bg-gray-200">
           <Main />
           <NextScript />
         </body>
