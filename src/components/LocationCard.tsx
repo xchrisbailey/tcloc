@@ -12,25 +12,25 @@ interface Props {
 }
 
 const PostCard: FC<Props> = ({ city, state, cover, summary, slug }) => (
-  <article className="flex flex-col w-full bg-white shadow overflow-hidden mb-1 rounded justify-self-center">
-    <section className="w-full h-2/5 resize overflow-hidden">
+  <article className="flex flex-col w-full mb-1 overflow-hidden bg-white rounded shadow justify-self-center">
+    <section className="w-full overflow-hidden resize h-2/5">
       <img
         src={imageBuilder.image(cover).url()}
-        className="w-full h-full object-fill"
+        className="object-fill w-full h-full"
         alt={city}
       />
     </section>
 
-    <section className="m-0 bg-gray-800 py-2 px-1">
-      <h1 className="text-lg m-0 p-0 text-pink-200 leading-5">{city}</h1>
-      <h2 className="m-0 p-0 text-lg text-white leading-5">{state}</h2>
+    <section className="px-1 py-2 m-0 bg-gray-800">
+      <h1 className="p-0 m-0 text-lg leading-5 text-pink-200">{city}</h1>
+      <h2 className="p-0 m-0 text-lg leading-5 text-white">{state}</h2>
     </section>
 
-    <section className="p-1 flex-grow overflow-hidden">
+    <section className="flex-grow p-1 overflow-hidden">
       <p className="p-1">{summary}</p>
     </section>
-    <section className="bg-indigo-200 text-right pr-1 py-2">
-      <p className="m-0 p-0 pr-1 text-sm font-bold uppercase">
+    <section className="py-2 pr-1 text-right bg-indigo-200">
+      <p className="p-0 pr-1 m-0 text-sm font-bold uppercase">
         <Link as={`/locations/${slug}`} href="/locations/[slug]">
           <a className="text-indigo-800 hover:text-indigo-900 hover:underline">
             Read More

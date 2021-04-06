@@ -15,60 +15,81 @@ interface Props {
 const Location: FC<Props> = ({ location, coords }) => {
   return (
     <Layout>
-      <section className="grid grid-flow-row grid-cols-1 md:grid-cols-2 auto-rows-max gap-4 mx-2 md:mx-0">
+      <section className="grid grid-flow-row grid-cols-1 gap-4 mx-2 md:grid-cols-2 auto-rows-max md:mx-0">
         <div>
           <h1 className="text-3xl font-bold text-pink-600">
             {location.city}, {location.state}
           </h1>
         </div>
         <Map {...coords} />
-        <ContentBlock
-          name="Housing Costs"
-          type="cost"
-          info={location.housingCosts}
-        />
-        <ContentBlock name="Weather" info={location.weather} type="weather" />
-
-        <ContentBlock
-          title="Hospitals"
-          name="Hospitals & Quick Info"
-          info={location.hospitals}
-          type="withNotesLinks"
-        />
-        <ContentBlock
-          name="Residency Programs"
-          info={location.residencyPrograms}
-          type="basicLink"
-        />
-
-        <ContentBlock name="Delta" info={location.delta} type="basicNote" />
-        <ContentBlock
-          name="Computer Science"
-          info={location.computerScience}
-          type="withNotesLinks"
-        />
-
+        {location.housingCosts && (
           <ContentBlock
-          name="Tennis Clubs"
-            info={location.tennisClubs}
-          type="withNotesLinks"
+            name="Housing Costs"
+            type="cost"
+            info={location.housingCosts}
           />
-        <ContentBlock
-          name="Tennis Leagues"
-          info={location.tennisLeagues}
-          type="basicLink"
-        />
+        )}
+        {location.weather && (
+          <ContentBlock name="Weather" info={location.weather} type="weather" />
+        )}
 
-        <ContentBlock
-          name="Trails (Hiking/Running)"
-          info={location.trails}
-          type="withNotesLinks"
-        />
-        <ContentBlock
-          name="Camping"
-          info={location.camping}
-          type="withNotesLinks"
-        />
+        {location.hospitals && (
+          <ContentBlock
+            title="Hospitals"
+            name="Hospitals & Quick Info"
+            info={location.hospitals}
+            type="withNotesLinks"
+          />
+        )}
+        {location.residencyPrograms && (
+          <ContentBlock
+            name="Residency Programs"
+            info={location.residencyPrograms}
+            type="basicLink"
+          />
+        )}
+
+        {location.delta && (
+          <ContentBlock name="Delta" info={location.delta} type="basicNote" />
+        )}
+        {location.computerScience && (
+          <ContentBlock
+            name="Computer Science"
+            info={location.computerScience}
+            type="withNotesLinks"
+          />
+        )}
+
+        {location.tennisClubs && (
+          <ContentBlock
+            name="Tennis Clubs"
+            info={location.tennisClubs}
+            type="withNotesLinks"
+          />
+        )}
+
+        {location.tennisLeagues && (
+          <ContentBlock
+            name="Tennis Leagues"
+            info={location.tennisLeagues}
+            type="basicLink"
+          />
+        )}
+
+        {location.trails && (
+          <ContentBlock
+            name="Trails (Hiking/Running)"
+            info={location.trails}
+            type="withNotesLinks"
+          />
+        )}
+        {location.camping && (
+          <ContentBlock
+            name="Camping"
+            info={location.camping}
+            type="withNotesLinks"
+          />
+        )}
       </section>
     </Layout>
   )

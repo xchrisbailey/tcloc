@@ -13,12 +13,12 @@ const ContentBlock: FC<Props> = ({ title, name, type, info }) => {
   if (type === 'cost') {
     return (
       <article>
-        <h3 className="bg-green-400 rounded shadow px-2 py-2 text-xl uppercase font-bold">
+        <h3 className="px-2 py-2 text-xl font-bold uppercase bg-green-400 rounded shadow">
           {name}
         </h3>
         <ul className="list-disc list-inside">
           {info ? (
-            info.map(cost => (
+            info.map((cost) => (
               <li key={cost._key}>
                 average {cost.type} cost ${cost.cost}:{' '}
                 <a href={cost.source}>source</a>
@@ -33,12 +33,12 @@ const ContentBlock: FC<Props> = ({ title, name, type, info }) => {
   } else if (type === 'weather') {
     return (
       <article>
-        <h3 className="bg-blue-400 rounded shadow px-2 py-2 text-xl uppercase font-bold">
+        <h3 className="px-2 py-2 text-xl font-bold uppercase bg-blue-400 rounded shadow">
           {name}
         </h3>
         <ul className="list-disc list-inside">
           {info ? (
-            info.map(w => (
+            info.map((w) => (
               <li key={w._key}>
                 The {w.type} starts in {w.startMonth} and has an average
                 temperature of {w.averageTemperature}°F
@@ -53,11 +53,11 @@ const ContentBlock: FC<Props> = ({ title, name, type, info }) => {
   } else if (type === 'withNotesLinks') {
     return (
       <article>
-        <h3 className="bg-purple-400 rounded shadow px-2 py-2 text-xl uppercase font-bold">
+        <h3 className="px-2 py-2 text-xl font-bold uppercase bg-purple-400 rounded shadow">
           {title ? title : name}
         </h3>
         {info ? (
-          info.map(h => (
+          info.map((h) => (
             <>
               <h4 className="text-lg" key={h._key}>
                 <a
@@ -80,11 +80,11 @@ const ContentBlock: FC<Props> = ({ title, name, type, info }) => {
   } else if (type === 'basicLink') {
     return (
       <article>
-        <h3 className="bg-yellow-400 rounded shadow px-2 py-2 text-xl uppercase font-bold">
+        <h3 className="px-2 py-2 text-xl font-bold uppercase bg-yellow-400 rounded shadow">
           {name}
         </h3>
         {info ? (
-          info.map(rp => (
+          info.map((rp) => (
             <ul className="list-disc list-inside" key={rp._key}>
               <li>
                 <a href={rp.url}>{rp.name}</a>
@@ -99,7 +99,7 @@ const ContentBlock: FC<Props> = ({ title, name, type, info }) => {
   } else if (type === 'basicNote') {
     return (
       <article>
-        <h3 className="bg-indigo-400 rounded shadow px-2 py-2 text-xl font-bold uppercase">
+        <h3 className="px-2 py-2 text-xl font-bold uppercase bg-indigo-400 rounded shadow">
           {name}
         </h3>
         {info ? <NotesList notes={info} /> : null}

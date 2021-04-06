@@ -17,7 +17,7 @@ const MyMap: FC<Props> = ({ lat, lng }) => {
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           style={{ height: '250px' }}
         />
         <Marker position={[lat, lng]}>
