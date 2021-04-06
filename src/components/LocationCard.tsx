@@ -1,4 +1,3 @@
-import { css } from '@emotion/react'
 import Link from 'next/link'
 import { FC } from 'react'
 
@@ -12,112 +11,40 @@ interface Props {
   slug: string
 }
 
-const PostCard: FC<Props> = ({ city, state, cover, summary, slug }) => (
-  <article
-    css={css`
-      display: flex;
-      flex-direction: column;
-      max-width: 350px;
-      background-color: #fff;
-      filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.2));
-      overflow: hidden;
-      margin-bottom: 1em;
-      border-radius: 0.25em;
-      transition: all 0.1s ease-in-out;
-      justify-self: center;
-      &:hover {
-        filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.2));
-        img {
-          opacity: 100%;
-        }
-      }
-    `}
-  >
-    <img
-      src={imageBuilder.image(cover).url()}
-      css={css`
-        object-fit: cover;
-        width: 100%;
-        height: 250px;
-        opacity: 80%;
-        transition: opacity 0.2s ease-in-out;
-      `}
-      alt={city}
-    />
+const PostCard: FC<Props> = ({ city, state, cover, summary, slug }) => {
+  return (
+    <article className="flex flex-col w-full mb-1 overflow-hidden bg-white rounded shadow justify-self-center">
+      <section className="w-full overflow-hidden resize h-2/5">
+        <img
+          src={imageBuilder.image(cover).url()}
+          className="object-fill w-full h-full"
+          alt={city}
+        />
+      </section>
 
-    <section
-      css={css`
-        margin: 0;
-        padding: 0.2em 0.4em;
-        background-color: var(--color-darkGrey);
-        transition: background-color 0.2s;
-      `}
-    >
-      <h1
-        css={css`
-          margin: 0;
-          padding: 0;
-          font-size: 1.25em;
-          line-height: 1.2em;
-          color: var(--color-pink);
-        `}
-      >
-        {city}
-      </h1>
-      <h2
-        css={css`
-          margin: 0;
-          padding: 0;
-          font-size: 0.8em;
-          line-height: 1em;
-          color: var(--color-white);
-          border-bottom: none;
-          margin-bottom: 0.3em;
-        `}
-      >
-        {state}
-      </h2>
-    </section>
+      <section className="px-1 py-2 m-0 bg-gray-800">
+        <h1 className="p-0 m-0 text-lg leading-5 tracking-wide text-pink-200">
+          {city}
+        </h1>
+        <h2 className="p-0 m-0 text-lg leading-5 tracking-wide text-white">
+          {state}
+        </h2>
+      </section>
 
-    <section
-      css={css`
-        padding: 0.25em;
-        height: 100%;
-        overflow: hidden;
-      `}
-    >
-      <p
-        css={css`
-          font-size: 0.9em;
-          line-height: 1.25em;
-          margin: 0;
-        `}
-      >
-        {summary}
-      </p>
-    </section>
-    <section
-      css={css`
-        background-color: var(--color-lightGrey);
-        text-align: right;
-        padding-right: 0.3em;
-      `}
-    >
-      <p
-        css={css`
-          margin: 0;
-          padding: 0 0 0 0.4em;
-          font-size: 0.75em;
-          font-weight: bold;
-          text-transform: uppercase;
-        `}
-      >
-        <Link as={`/locations/${slug}`} href="/locations/[slug]">
-          <a>Read More</a>
-        </Link>
-      </p>
-    </section>
-  </article>
-)
+      <section className="flex-grow p-1 overflow-hidden">
+        <p className="p-1">{summary}</p>
+      </section>
+      <section className="py-2 pr-1 text-right bg-indigo-200">
+        <p className="p-0 pr-1 m-0 text-sm font-bold uppercase">
+          <Link as={`/locations/${slug}`} href="/locations/[slug]">
+            <a className="text-indigo-800 hover:text-indigo-900 hover:underline">
+              Read More
+            </a>
+          </Link>
+        </p>
+      </section>
+    </article>
+  )
+}
 
 export default PostCard

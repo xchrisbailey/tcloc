@@ -14,7 +14,7 @@ interface Props {
 export const Home: FC<Props> = ({ allLocations }) => (
   <Layout>
     <Grid>
-      {allLocations.map(location => (
+      {allLocations.map((location) => (
         <LocationCard
           key={location.city}
           city={location.city}
@@ -32,7 +32,7 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const allLocations = await getAllLocations(preview)
 
   return {
-    props: { allLocations, preview }
+    props: { allLocations, preview },
   }
 }
 

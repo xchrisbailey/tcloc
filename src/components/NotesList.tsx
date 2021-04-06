@@ -7,7 +7,7 @@ interface Props {
 const NotesList: FC<Props> = ({ notes }) => {
   if (notes) {
     return (
-      <ul>
+      <ul className="px-2 list-disc list-inside">
         {notes.map((note) => (
           <li key={note}>{note}</li>
         ))}

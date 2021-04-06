@@ -2,15 +2,11 @@ import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { ReactElement } from 'react'
 
 export default class MyDocument extends Document {
-  static async getInitialProps(ctx: import('next/document').DocumentContext) {
+  static async getInitialProps(ctx: import('next/document').DocumentContext): Promise<{ styles: JSX.Element; html: string; head?: JSX.Element[] }> {
     const initialProps = await Document.getInitialProps(ctx)
     return {
       ...initialProps,
-      styles: (
-        <>
-          {initialProps.styles}
-        </>
-      ),
+      styles: <>{initialProps.styles}</>,
     }
   }
 
@@ -20,7 +16,7 @@ export default class MyDocument extends Document {
         <Head>
           <link rel="shortcut icon" href="/favicon.png" />
         </Head>
-        <body>
+        <body className="bg-gray-200 h-100vh">
           <Main />
           <NextScript />
         </body>
