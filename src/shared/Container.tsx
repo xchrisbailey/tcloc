@@ -1,8 +1,9 @@
-import { css } from '@emotion/react'
+import { css, SerializedStyles } from '@emotion/react'
 import { ReactNode, FC } from 'react'
 
 interface Props {
   children: ReactNode
+  css?: SerializedStyles
   cw?: string[]
 }
 

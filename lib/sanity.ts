@@ -10,13 +10,8 @@ const options = {
 }
 
 // const client = sanityClient(options)
-const client = createClient({
-  ...options,
-  useCdn: false
-})
-
+const client = createClient(options)
 export const imageBuilder = sanityImage(client)
-
 export const previewClient = sanityClient({
   ...options,
   useCdn: false,

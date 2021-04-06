@@ -20,7 +20,7 @@ const locationFields = `
   weather
 `
 
-const getClient = (preview) => (preview ? previewClient : client)
+const getClient = preview => (preview ? previewClient : client)
 
 export async function getAllLocationsWithSlug(): Promise<any> {
   const data = await client.fetch(
@@ -47,14 +47,13 @@ export async function getLocationBySlug(
   slug: string,
   preview: boolean
 ): Promise<LocationType> {
-  const curClient = getClient(preview)
   const location = await Promise.all([
-    curClient.fetch(
+    previewClient.fetch(
       `*[_type == "location" && slug.current == $slug] | order(_createdAt desc) {
         ${locationFields} 
       }`,
       { slug }
-    ),
+    )
   ])
 
   return location[0][0]
