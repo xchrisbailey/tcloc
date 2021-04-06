@@ -6,7 +6,9 @@ const Header: FC = () => (
     <div className="container mx-auto">
       <h1 className="px-4 text-xl font-bold tracking-wide md:text-3xl">
         <Link href="/">
-          <a href="">Toni and Chris&apos; Location Notebook</a>
+          <a className="text-black hover:text-black hover:no-underline" href="">
+            Toni and Chris&apos; Location Notebook
+          </a>
         </Link>
       </h1>
     </div>
